@@ -259,3 +259,9 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/RoboModelRefactoring/poly34.cpp
+/RoboModelRefactoring/poly34.h
+/RoboModelRefactoring/RoboModel.cpp
+/RoboModelRefactoring/RoboModel.h
+/RoboModelRefactoring/Source.cpp
+/RoboModelRefactoring/чёсделано.txt

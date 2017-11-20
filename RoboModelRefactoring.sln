@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RoboModelRefactoring", "RoboModelRefactoring\RoboModelRefactoring.vcxproj", "{529B4C95-7279-4738-B74A-E16C8A2FA9FD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RoboModelRefactoringTest", "RoboModelRefactoringTest\RoboModelRefactoringTest.vcxproj", "{1AC8BE91-8C24-412C-9894-91185713F3A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{529B4C95-7279-4738-B74A-E16C8A2FA9FD}.Release|x64.Build.0 = Release|x64
 		{529B4C95-7279-4738-B74A-E16C8A2FA9FD}.Release|x86.ActiveCfg = Release|Win32
 		{529B4C95-7279-4738-B74A-E16C8A2FA9FD}.Release|x86.Build.0 = Release|Win32
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Debug|x64.ActiveCfg = Debug|x64
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Debug|x64.Build.0 = Debug|x64
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Debug|x86.ActiveCfg = Debug|Win32
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Debug|x86.Build.0 = Debug|Win32
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Release|x64.ActiveCfg = Release|x64
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Release|x64.Build.0 = Release|x64
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Release|x86.ActiveCfg = Release|Win32
+		{1AC8BE91-8C24-412C-9894-91185713F3A6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
