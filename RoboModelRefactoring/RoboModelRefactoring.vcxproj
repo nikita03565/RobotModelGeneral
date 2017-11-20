@@ -119,11 +119,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fanucModel.cpp" />
     <ClCompile Include="newRM.cpp" />
     <ClCompile Include="poly34.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fanucModel.h" />
     <ClInclude Include="newRM.h" />
     <ClInclude Include="poly34.h" />
   </ItemGroup>
