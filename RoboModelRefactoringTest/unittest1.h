@@ -1,19 +1,23 @@
-#pragma once
+#ifndef TESTS_
+#define TESTS_
 
 #include "CppUnitTest.h"
+#include "../RoboModelRefactoring/fanucModel.h"
+#include "../RoboModelRefactoring/fanucModel.cpp"
 #include "../RoboModelRefactoring/newRM.h"
 #include "../RoboModelRefactoring/newRM.cpp"
 #include "../RoboModelRefactoring/poly34.h"
 #include "../RoboModelRefactoring/poly34.cpp"
+#include <vector>
+#include <array>
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace roboModelRefactoringTest
 {
 	TEST_CLASS(UnitTest1)
 	{
-		RoboModel _rob;
+		FanucModel _rob;
 		double _angleTolerance = 0.6, _posTolerance = 0.5;
-		std::vector<double> jointsToQ(std::array<double, 6> joints);
 	public:
 
 		TEST_METHOD(testMethod1);
@@ -36,3 +40,5 @@ namespace roboModelRefactoringTest
 		TEST_METHOD(testMethod18);
 	};
 }
+
+#endif

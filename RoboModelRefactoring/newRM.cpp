@@ -15,15 +15,11 @@ struct RoboModel::DhParameters
 };
 
 
-RoboModel::RoboModel()
+RoboModel::RoboModel(std::vector<std::array<double, 4>> input)
 {
-	_kinematicChain.reserve(6);
-	_kinematicChain.push_back(DhParameters(0, 0, 150, PI / 2));
-	_kinematicChain.push_back(DhParameters(0, 0, 790, 0));
-	_kinematicChain.push_back(DhParameters(0, 0, 250, PI / 2));
-	_kinematicChain.push_back(DhParameters(835, 0, 0, -PI / 2));
-	_kinematicChain.push_back(DhParameters(0, 0, 0, PI / 2));
-	_kinematicChain.push_back(DhParameters(100, 0, 0, 0));
+	_kinematicChain.reserve(input.size());
+	for (int i = 0; i < input.size(); ++i)
+		_kinematicChain.push_back(DhParameters(input[i][0], input[i][1], input[i][2], input[i][3]));
 }
 
 RoboModel::~RoboModel()
@@ -35,12 +31,10 @@ std::array<double, 6> RoboModel::forwardTask(std::vector<double> inputq)
 {	
 	_kinematicChain[0]._qParam = inputq[0];
 	cv::Mat transformMatrix = prevMatTransform(0);
-	std::cout << transformMatrix << std::endl;
 	for (int i = 1; i < inputq.size(); ++i)
 	{
 		_kinematicChain[i]._qParam = inputq[i];
 		transformMatrix = transformMatrix * prevMatTransform(i);
-		std::cout << transformMatrix << std::endl;
 	}
 	
 	
@@ -90,3 +84,4 @@ std::array<double, 3> RoboModel::angles(const cv::Mat p6) const
 	angleVector.at(2) = atan2(p6.at<double>(1, 0), p6.at<double>(0, 0));
 	return angleVector;
 }
+
