@@ -1,6 +1,5 @@
 #include "newRM.h"
 #include <opencv2/core.hpp>
-#include <iostream>
 #define PI 3.14159265
 
 struct RoboModel::DhParameters
@@ -9,7 +8,7 @@ struct RoboModel::DhParameters
 	double _qParam;
 	double _aParam;
 	double _alphaParam;
-	DhParameters(const double d, const double q, const double a, const double alpha): _dParam(d), _qParam(q), _aParam(a), _alphaParam(alpha)
+	DhParameters(const double d, const double q, const double a, const double alpha) : _dParam(d), _qParam(q), _aParam(a), _alphaParam(alpha)
 	{
 	}
 };
@@ -24,11 +23,11 @@ RoboModel::RoboModel(std::vector<std::array<double, 4>> input)
 
 RoboModel::~RoboModel()
 {
-	
+
 }
 
-std::array<double, 6> RoboModel::forwardTask(std::vector<double> inputq)
-{	
+cv::Mat RoboModel::forwardTask(std::vector<double> inputq)
+{
 	_kinematicChain[0]._qParam = inputq[0];
 	cv::Mat transformMatrix = prevMatTransform(0);
 	for (int i = 1; i < inputq.size(); ++i)
@@ -36,19 +35,8 @@ std::array<double, 6> RoboModel::forwardTask(std::vector<double> inputq)
 		_kinematicChain[i]._qParam = inputq[i];
 		transformMatrix = transformMatrix * prevMatTransform(i);
 	}
-	
-	
-	std::array<double, 3> wprAngles = angles(transformMatrix);
 
-	std::array<double, 6> res;
-	res[0] = transformMatrix.at<double>(0, 3);
-	res[1] = transformMatrix.at<double>(1, 3);
-	res[2] = transformMatrix.at<double>(2, 3);
-	res[3] = wprAngles.at(0);
-	res[4] = wprAngles.at(1);
-	res[5] = wprAngles.at(2);
-
-	return res;
+	return transformMatrix;
 }
 
 cv::Mat RoboModel::prevMatTransform(const int i)
@@ -73,15 +61,5 @@ cv::Mat RoboModel::prevMatTransform(const int i)
 	result.at<double>(3, 3) = 1;
 
 	return result;
-}
-
-std::array<double, 3> RoboModel::angles(const cv::Mat p6) const
-{
-	std::array<double, 3> angleVector;
-	angleVector.at(0) = atan2(p6.at<double>(2, 1), p6.at<double>(2, 2));
-	angleVector.at(1) = atan2(-p6.at<double>(2, 0),
-		sqrt(p6.at<double>(2, 1) * p6.at<double>(2, 1) + p6.at<double>(2, 2) * p6.at<double>(2, 2)));
-	angleVector.at(2) = atan2(p6.at<double>(1, 0), p6.at<double>(0, 0));
-	return angleVector;
 }
 
